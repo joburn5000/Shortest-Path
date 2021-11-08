@@ -7,7 +7,7 @@ Assistance
 
 Each team member can be contacted through Snapchat. Outside of emergencies or other commitments, we commit to responding to messages within 24 hours.
 
-Respect
+Respectrock
 
 The note-taker for the week will also serve as the ‘project lead’ for the weekly meeting. Their role is to ensure that every member of the group has had a chance to speak or state their opinion about a design decision or any other topic related to the final project. All decisions will be accepted by simple majority – while unanimous agreement is preferred, it is not required. By signing this document, each member of the team commits to adhering to the decisions made, even if they personally disagree with them.
 
@@ -23,8 +23,12 @@ To ensure an equal distribution of work, each member is expected to independentl
 
 Conflict Resolution 
 
-All conflicts within the team will be decided by a rock paper scissors no items. The winner will decide who was right and who was wrong (Might makes right).
+All conflicts within the team will be decided by a rock paper scissors. The winner will decide who was right and who was wrong (Might makes right).
 
 Signed:
 
 Andrew O'Connell andrewo4
+
+Steven Beallis beallis3
+
+Josh Newburn newburn2
