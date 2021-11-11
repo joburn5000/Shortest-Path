@@ -13,19 +13,20 @@ Successful project:
 
 
 Dataset
+- Our dataset will be from https://simplemaps.com/data/us-cities
+- It is a downloadable file that contains the latitude and longitude for towns in America
 
-- Datasets: Graphs, Priority Queue
+- Other: Graphs, Priority Queue
 - In computer science, a priority queue is an abstract data type similar to a regular queue 
 or stack data structure in which each element additionally has a "priority" associated with it. 
 In a priority queue, an element with high priority is served before an element with low priority.
 
 
 Data Acquisition and Processing
-- We will download, store, and process data in the following manner: We will search for online data 
-such as finding nodes that are preset and connected. We will download this and store it in our repo, 
-and if necessary convert it to the format that we need, or find a format of data that matches what we 
-are looking for. 
-- We will then process this data by putting it through the algorithm and getting a necessary output. 
+- We will download, store, and process data in the following manner: 
+- We will doanload the file from https://simplemaps.com/data/us-cities as an excel sheet
+- We will then process this data by writing an algorithm to convert the cells in the excel sheet
+to nodes, using latitude and longitude to get our datapoints so we can calculate distance
 - To handle the messiness of real world data, we will solve issues by researching the common ways 
 to tackle them. We will brainstorm as a team in order to come up with our best guess of a solution. 
 - If our solution does not work, then we will decide as a team what other solutions may work.
