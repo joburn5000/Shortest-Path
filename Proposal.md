@@ -53,16 +53,6 @@ Inputs: A graph of nodes, a start node, and an end node.
 Outputs: A graph of the same format consisting of the shortest path from start to end, easing the comparison
 between the full graph and the shortest possible path.
 
-/*
-Heuristics: Calculating f(n), g(n), updating node neighbor’s f and g values
-- Manhattan / Taxicab Heuristic: A taxicab geometry is a form of geometry in which the usual distance function
-or metric of Euclidean geometry is replaced by a new metric in which the distance between two points is the 
-sum of the absolute differences of their Cartesian coordinates.
-- Pythagorean Heuristic: Fundamental relation in Euclidean geometry among the three sides of a right triangle. 
-It states that the area of the square whose side is the hypotenuse is equal to the sum of the areas of the 
-squares on the other two sides
-*/
-
 
 Timeline
 - data acquisition: November 15
