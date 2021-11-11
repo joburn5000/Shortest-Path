@@ -1,7 +1,7 @@
 Leading Question 
 
 - Given a graph of connected nodes, how can one find the shortest path from start to finish 
-using the A* algorithm, dijkstra's algorithm, and BFS traversal. How do these compare and 
+using the Floyd-Warshall's Algorithm, dijkstra's algorithm, and BFS traversal. How do these compare and 
 what does this teach us about different kinds of efficiency?
 - We are hoping to solve the problem of finding the shortest path from one node to another 
 node using several types of algorithms / a traversal.
@@ -33,12 +33,12 @@ to tackle them. We will brainstorm as a team in order to come up with our best g
 
 
 Graph Algorithms 
-- A* Manhattan: Manhattan Distance is calculated by the amount of edges required to travel between two 
-nodes. On a 2D graph, it is the amount of cardinal movements in order to get to the end.
-- A* Pythagorean: Pythagorean Distance takes a diagonal perspective on a 2D graph, it virtually considers
-diagonal travel between nodes.
 - Dijkstra's algorithm: Dijkstra's Algorithm is based on the principle of relaxation, in which more accurate
 values gradually replace an approximation to the correct distance until the shortest distance is reached.
+- Floyd-Warshall's Algorithm: Floyd-Warshall, on the other hand, computes the shortest distances between
+every pair of vertices in the input graph. The Floyd-Warshall algorithm is an example of dynamic programming.
+It breaks the problem down into smaller subproblems, then combines the answers to those subproblems to solve
+the big, initial problem.
 
 
 Traversal: 
@@ -53,7 +53,7 @@ Inputs: A graph of nodes, a start node, and an end node.
 Outputs: A graph of the same format consisting of the shortest path from start to end, easing the comparison
 between the full graph and the shortest possible path.
 
-
+/*
 Heuristics: Calculating f(n), g(n), updating node neighbor’s f and g values
 - Manhattan / Taxicab Heuristic: A taxicab geometry is a form of geometry in which the usual distance function
 or metric of Euclidean geometry is replaced by a new metric in which the distance between two points is the 
@@ -61,6 +61,7 @@ sum of the absolute differences of their Cartesian coordinates.
 - Pythagorean Heuristic: Fundamental relation in Euclidean geometry among the three sides of a right triangle. 
 It states that the area of the square whose side is the hypotenuse is equal to the sum of the areas of the 
 squares on the other two sides
+*/
 
 
 Timeline
