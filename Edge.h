@@ -1,11 +1,13 @@
-class Edge { #Edge.h
-	Public:
+#include "City.h"
+#include "Graph.h"
+class Edge {
+	public:
 		Edge(City s, City e);
 		City getStart();
 		City getEnd();
-		Double getDist();
-	Private:
+		double getDist();
+	private:
 		City start_;
 		City end_;
-		Double dist_;
-} #Edge.cpp
+		double dist_;
+};

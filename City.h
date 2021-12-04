@@ -1,10 +1,16 @@
-class City { #City.h
-	Public:
+#include <map>
+#include <string>
+#include "Graph.h"
+#include "Edge.h"
+using namespace std;
+
+class City {
+	public:
 		City();
 		City(string name);
-		String getName();
+		string getName();
 		map<string, double> getAdj();
-	Private:
-		Std::string _city_name;
+	private:
+		std::string _city_name;
 		std::map<string, double> adj_cities;
-} #implement this stuff in City.cpp
+};
