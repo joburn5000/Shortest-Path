@@ -22,7 +22,7 @@ void process_data(string filename) {
         data.push_back(line);
         cout<<line<<endl;
     }
-    cout<<"hello"<<endl;
+    cout<<"hello world"<<endl;
     // build graph
     // connect nodes according to procedure
 }
