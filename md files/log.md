@@ -5,3 +5,4 @@
 - Team meeting with John Li
 12/04
 - Created and updated log (Josh)
+- Created process_data function
