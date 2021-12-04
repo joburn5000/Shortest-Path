@@ -1,10 +1,9 @@
-#pragma once
 #include <iostream>
 #include "data_processing.h"
 using namespace std;
 
 int main() {
-    process_data("data/uscities.csv");
-    cout<<"hello world"<<endl;
+    data_processing data;
+    data.process_data("data/uscities.csv");
     return 0;
 }
