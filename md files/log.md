@@ -7,3 +7,7 @@
 12/04
 - Created and updated log (Josh)
 - Created process_data function (Josh)
+- Made some corrections to the header files (Steven)
+
+12/05
+- Added create_city, create_city_list, and connect_cities functions in data_processing class (Josh)

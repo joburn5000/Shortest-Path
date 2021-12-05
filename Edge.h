@@ -1,8 +1,9 @@
+#pragma once
 #include "City.h"
-#include "Graph.h"
 
 class Edge {
 	public:
+        Edge();
 		Edge(City s, City e);
 		City getStart();
 		City getEnd();
