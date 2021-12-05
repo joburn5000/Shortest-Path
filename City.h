@@ -19,6 +19,6 @@ class City {
 		string city_name;
         int latitude;
         int longitude;
-        vector<string> adj_cities;
+        vector<City> adj_cities;
 		// map<string, double> adj_cities;
 };
