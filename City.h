@@ -1,16 +1,24 @@
+#pragma once
+#include <cmath>
 #include <map>
 #include <string>
-#include "Graph.h"
-#include "Edge.h"
+#include <vector>
+
 using namespace std;
 
 class City {
 	public:
 		City();
-		City(string name);
+		City(string name, int latitude_, int longitude_);
 		string getName();
-		map<string, double> getAdj();
+        int getLatitude();
+        int getLongitude();
+        int get_distance(City target);
+		// map<string, double> getAdj();
 	private:
-		std::string _city_name;
-		std::map<string, double> adj_cities;
+		string city_name;
+        int latitude;
+        int longitude;
+        vector<string> adj_cities;
+		// map<string, double> adj_cities;
 };
