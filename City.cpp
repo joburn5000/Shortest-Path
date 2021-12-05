@@ -22,3 +22,6 @@ int City::getLongitude() {
 int City::get_distance(City target) {
     return sqrt(pow((latitude - target.getLatitude()), 2) + pow((longitude - target.getLongitude()), 2));
 };
+void City::add_adj_city(City new_city) {
+    adj_cities.push_back(new_city);
+}

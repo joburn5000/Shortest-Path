@@ -14,6 +14,7 @@ class City {
         int getLatitude();
         int getLongitude();
         int get_distance(City target);
+        void add_adj_city(City new_city);
 		// map<string, double> getAdj();
 	private:
 		string city_name;
