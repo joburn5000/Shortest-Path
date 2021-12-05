@@ -1,13 +1,15 @@
-/*
-class Edge { #Edge.h
-	Public:
-		Edge(City s, City e);
-		City getStart();
-		City getEnd();
-		Double getDist();
-	Private:
-		City start_;
-		City end_;
-		Double dist_;
-} #Edge.cpp
-*/
+#include "Edge.h"
+
+Edge::Edge(City s, City e) {
+    start_ = s;
+    end_ = e;
+}
+City Edge::getStart() {
+    return start_;
+}
+City Edge::getEnd() {
+    return end_;
+}
+double Edge::getDist() {
+    return dist_;
+}
