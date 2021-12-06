@@ -7,10 +7,10 @@ Public:
 	Std::vector<Edge> getEdges();
 	Std::vector<City> getCities();
 	Private:
-		std::vector<std::vector<double>> FW();
-		std::vector<std::vector<double>> dijkstras(); // change vectors
-		std::vector<Edge> edges_;
-		std::vector<City> cities_;
+		vector<vector<double>> FW();
+		vector<vector<double>> dijkstras(); // change vectors
+		vector<Edge> edges_;
+		vector<City> cities_;
 } # Graph.cpp
 */
 
@@ -18,11 +18,11 @@ Public:
 #include "Edge.h"
 #include "City.h"
 
-std::vector<std::vector<double>> Graph::FW() {
+vector<vector<double>> Graph::FW() {
 	double[cities_.size()][cities_.size()] dist;
 	for (double[] arr : dist) {
 		for (double d : arr) {
-			d = std::numeric_limits<double>::infinity();
+			d = numeric_limits<double>::infinity();
 		}
 	}
 	for (City c : cities_) {
@@ -43,16 +43,16 @@ std::vector<std::vector<double>> Graph::FW() {
 	return dist;
 }
 
-std::vector<std::vector<double>> Graph::dijkstras(Graph G, City s) { // use vectors
+vector<vector<double>> Graph::dijkstras(Graph G, City s) { // use vectors
 	double[] d;
 	City[] p;
-	float infinity = std::numeric_limits<float>::infinity();
+	float infinity = numeric_limits<float>::infinity();
 	for(City v : cities_) {
 		d[v] = infinity;
 		p[v] = NULL;
 	}
 	d[s] = 0;
-	PriorityQueue Q; (use std:: queue)
+	PriorityQueue Q; (use  queue)
 	Q.buildHeap(G.getCities());
 	Graph T;
 	for(int i = 0; i < G.getCities().size(); i++) {
@@ -63,6 +63,31 @@ std::vector<std::vector<double>> Graph::dijkstras(Graph G, City s) { // use vect
 				d[v] = cost(u,v) + d[u];
 				p[v] = m;
 }
+		}
+	}
+}
+
+vector<vector<double>> Graph::BFS (Graph G, City s, City e) {
+	queue<City> q; # queue
+	vector<City> path;
+	map<string, bool> explored;
+	map<string, bool> previous;
+	for (City v : cities_) {
+		explored[v] = false;
+		previous[v] = NULL;
+	}
+	explored[s] = true;
+	q.push(s);
+	while (!q.empty()) {
+		If (v == e) {
+			path.push_back(v);
+			return path;
+		}
+		q.pop();
+		for (City adjCity: Cities[v]) {
+			If (!explored[v]) {
+				explored[v] = true;
+				q.push(v);
 		}
 	}
 }
