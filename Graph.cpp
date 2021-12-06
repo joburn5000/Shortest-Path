@@ -18,32 +18,32 @@ Public:
 #include "Edge.h"
 #include "City.h"
 
-std::vector<std::vector<double>> FW() {
+std::vector<std::vector<double>> Graph::FW() {
 	double[cities_.size()][cities_.size()] dist;
-	For (double[] arr : dist) {
-		For (double d : arr) {
-			D = std::numeric_limits<double>::infinity();
+	for (double[] arr : dist) {
+		for (double d : arr) {
+			d = std::numeric_limits<double>::infinity();
 		}
 	}
-	For (City c : cities_) {
-		Dist[getIndex(c)][getIndex(c)] = 0.0;
-}
-For (Edge e : edges_) {
-	dist[getIndex(e.getStart())][getIndex(e.getEnd())] = e.getDist();
-}
-For (City k : cities_) {
-	For (City u : cities_) {
-		For (City v : cities_) {
-			If (dist[getIndex(u)][getIndex(v)] > dist[getIndex(u)][getIndex(k)] + dist[getIndex(k)][getIndex(v)]) {
-dist[getIndex(u)][getIndex(v)] =  dist[getIndex(u)][getIndex(k)] + dist[getIndex(k)][getIndex(v)];
+	for (City c : cities_) {
+		dist[getIndex(c)][getIndex(c)] = 0.0;
+	}
+	for (Edge e : edges_) {
+		dist[getIndex(e.getStart())][getIndex(e.getEnd())] = e.getDist();
+	}
+	for (City k : cities_) {
+		for (City u : cities_) {
+			for (City v : cities_) {
+				if (dist[getIndex(u)][getIndex(v)] > dist[getIndex(u)][getIndex(k)] + dist[getIndex(k)][getIndex(v)]) {
+						dist[getIndex(u)][getIndex(v)] =  dist[getIndex(u)][getIndex(k)] + dist[getIndex(k)][getIndex(v)];
+				}
 			}
 		}
 	}
-}
-return dist;
+	return dist;
 }
 
-std::vector<std::vector<double>>  dijkstras(Graph G, City s) { // use vectors
+std::vector<std::vector<double>> Graph::dijkstras(Graph G, City s) { // use vectors
 	double[] d;
 	City[] p;
 	float infinity = std::numeric_limits<float>::infinity();
@@ -65,5 +65,13 @@ std::vector<std::vector<double>>  dijkstras(Graph G, City s) { // use vectors
 }
 		}
 	}
+}
+
+// Helper function
+int Graph::getIndex(City c) {
+	for (int i = 0; i < cities_.size(); i++) {
+		if (cities_[i] == c) return i;
+	}
+	return -1;
 }
 
