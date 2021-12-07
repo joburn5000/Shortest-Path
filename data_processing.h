@@ -17,7 +17,7 @@ public:
     // creates a list of cities
     vector<City> create_city_list(vector<vector<string>> data);
     // connects all cities together
-    void connect_cities(vector<City> city_list); // @todo: only connect some cities together
+    void connect_cities(vector<City>& city_list); // @todo: only connect some cities together
 private:
     // vector<vector<string>> data;
 };

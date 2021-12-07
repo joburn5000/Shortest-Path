@@ -1,3 +1,3 @@
-main: main.cpp data_processing.cpp City.cpp Graph.cpp Edge.cpp
-	g++ main.cpp data_processing.cpp City.cpp Graph.cpp Edge.cpp -o main
+main: main.cpp data_processing.cpp City.cpp Edge.cpp
+	g++ main.cpp data_processing.cpp City.cpp Edge.cpp -o main
 

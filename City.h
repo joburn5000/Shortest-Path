@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -13,8 +14,11 @@ class City {
 		string getName();
         double getLatitude();
         double getLongitude();
-        double get_distance(City target);
+        double getDistance(City target);
         void add_adj_city(City new_city);
+        void delete_adj_cities();
+        vector<City> get_adj_cities();
+        void print_adj_cities();
 		// map<string, double> getAdj();
 	private:
 		string city_name;

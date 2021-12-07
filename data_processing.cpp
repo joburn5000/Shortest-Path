@@ -46,11 +46,22 @@ vector<City> data_processing::create_city_list(vector<vector<string>> data) {
     }
     return city_list;
 }
-void data_processing::connect_cities(vector<City> city_list) {
-    for (City city : city_list) {
-        for (City connecting_city : city_list) {
-            if (connecting_city.getName() != city.getName()) {
-                city.add_adj_city(connecting_city);
+void data_processing::connect_cities(vector<City>& city_list) {
+    for (int i = 0; i < city_list.size(); i++) {
+        for (int j = 0; j < city_list.size(); j++) {
+            int dist = city_list[i].getDistance(city_list[j]);
+            if (city_list[i].getName() != city_list[j].getName() && dist < 5) {
+                city_list[i].add_adj_city(city_list[j]);
+            }
+        }
+        if (city_list[i].get_adj_cities().size() < 3) {
+            
+            city_list[i].delete_adj_cities();
+            for (int j = 0; j < city_list.size(); j++) {
+                int dist = city_list[i].getDistance(city_list[j]);
+                if (city_list[i].getName() != city_list[j].getName() && dist < 8) {
+                    city_list[i].add_adj_city(city_list[j]);
+                }
             }
         }
     }

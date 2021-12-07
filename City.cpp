@@ -21,9 +21,25 @@ double City::getLatitude() {
 double City::getLongitude() {
     return longitude;
 }
-double City::get_distance(City target) {
+double City::getDistance(City target) {
     return sqrt(pow((latitude - target.getLatitude()), 2) + pow((longitude - target.getLongitude()), 2));
 };
 void City::add_adj_city(City new_city) {
     adj_cities.push_back(new_city);
+    //cout<<adj_cities.size()<<" ";
+}
+void City::print_adj_cities() {
+    
+    cout<<city_name<<" has "<<adj_cities.size()<<": ";
+    for (City adj : adj_cities) {
+        cout<<adj.getName()<< " ";
+    }
+    cout<<endl;
+    
+}
+vector<City> City::get_adj_cities() {
+    return adj_cities;
+}
+void City::delete_adj_cities() {
+    adj_cities.clear();
 }
