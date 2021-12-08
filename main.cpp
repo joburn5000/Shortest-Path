@@ -15,5 +15,6 @@ int main() {
         cout<<i+1<<") ";
         city_list[i].print_adj_cities();
     }
+    d.check_connections(city_list);
     return 0;
 }
