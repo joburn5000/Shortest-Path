@@ -19,11 +19,13 @@ Public:
 #include "City.h"
 
 vector<vector<double>> Graph::FW() {
-	double[cities_.size()][cities_.size()] dist;
-	for (double[] arr : dist) {
-		for (double d : arr) {
-			d = numeric_limits<double>::infinity();
+	vector<vector<double>> dist;
+	for (int i = 0; i < cities_.size(); i++) {
+		vector<double> inner;
+		for (int j = 0; j < cities_.size(); j++) {
+			inner.push_back(numeric_limits<double>::infinity());
 		}
+		dist.push_back(inner);
 	}
 	for (City c : cities_) {
 		dist[getIndex(c)][getIndex(c)] = 0.0;

@@ -18,3 +18,4 @@
 
 12/08
 - Finished connect_cities function and added a check_connections function (Josh)
+- Finished FW function to suit vectors. (Andrew)
