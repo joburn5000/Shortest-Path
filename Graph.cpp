@@ -45,23 +45,23 @@ vector<vector<double>> Graph::FW() {
 	return dist;
 }
 
-vector<vector<double>> Graph::dijkstras(Graph G, City s) { // use vectors
+vector<vector<double>> Graph::dijkstras(City s) { // use vectors
 	double[] d;
+	double infinity = 99999999;
 	City[] p;
-	float infinity = numeric_limits<float>::infinity();
 	for(City v : cities_) {
 		d[v] = infinity;
 		p[v] = NULL;
 	}
 	d[s] = 0;
-	PriorityQueue Q; (use  queue)
+	PriorityQueue Q; //use  queue
 	Q.buildHeap(G.getCities());
 	Graph T;
 	for(int i = 0; i < G.getCities().size(); i++) {
 		City m = Q.removeMin();
 		T.add(m);
 		for(City v : v.getAdj()) {
-			if(cost(u,v) + d[u] < d[v]) {  // the cost(u,v) would be the distance between cities, which is the double part of the adjacent city map
+			if(cost(u,v) + d[u] < d[v]) {
 				d[v] = cost(u,v) + d[u];
 				p[v] = m;
 }
