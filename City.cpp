@@ -15,7 +15,7 @@ string City::getName() {
     return city_name;
 }
 
-double City::getLatitude() {
+double City::getLatitude() const {
     return latitude;
 }
 double City::getLongitude() {
@@ -42,4 +42,20 @@ vector<City> City::get_adj_cities() {
 }
 void City::delete_adj_cities() {
     adj_cities.clear();
+}
+
+
+bool City::operator<(City const & other) const {
+    if (latitude < other.getLatitude()) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+bool City::operator>(City const & other) const {
+    if (latitude >= other.getLatitude()) {
+        return 1;
+    } else {
+        return 0;
+    }
 }

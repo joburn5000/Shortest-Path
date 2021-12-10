@@ -13,14 +13,8 @@ Public:
        vector<City> cities_;
 } # Graph.cpp
 */
- 
-#include <vector>
-#include <queue>
-#include <map>
-#include <utility>
-#include <limits>
-
 #include "Graph.h"
+
 using namespace std;
  
 vector<vector<double>> Graph::FW() {
@@ -59,18 +53,22 @@ map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
         d[v] = infinity;
     }
     d[s] = 0;
-    priority_queue<pair<double, City>, vector<pair<double, City>>, greater<double>> Q; //use  queue
+    priority_queue<pair<double, City>, vector<pair<double, City>>, greater<pair<double, City>>> Q; //use  queue
     for(City x : s.get_adj_cities()) {
-        pair<double, City> insert(s.getDistance(x), x);
+        pair<double, City> insert;
+        insert.first = s.getDistance(x);
+        insert.second = x;
         Q.push(insert);
     }
-    for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
+    for(unsigned i = 0; i < cities_.size(); i++) { // what is G
         City u = Q.top().second; // @todo change
         for(City v : u.get_adj_cities()) {
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    pair<double, City> insert(v.getDistance(x), x);
+                    pair<double, City> insert;
+                    insert.first = v.getDistance(x);
+                    insert.second = x;
                     Q.push(insert);
                 }
                 p[v] = u; // used to be p[v]

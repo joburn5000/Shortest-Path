@@ -3,6 +3,14 @@
 #include <fstream>
 #include "Edge.h"
 #include "City.h"
+
+#include <vector>
+#include <queue>
+#include <map>
+#include <utility>
+#include <limits>
+#include <iostream>
+#include <functional>
 using namespace std;
 
 class Graph {

@@ -12,13 +12,15 @@ class City {
 		City();
 		City(string name, double latitude_, double longitude_);
 		string getName();
-        double getLatitude();
+        double getLatitude() const;
         double getLongitude();
         double getDistance(City target);
         void add_adj_city(City new_city);
         void delete_adj_cities();
         vector<City> get_adj_cities();
         void print_adj_cities();
+        bool operator<(City const & other) const;
+        bool operator>(City const & other) const;
 		// map<string, double> getAdj();
 	private:
 		string city_name;
