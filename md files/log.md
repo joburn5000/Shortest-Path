@@ -11,7 +11,7 @@
 
 12/05
 - Added create_city, create_city_list, and connect_cities functions in data_processing class (Josh)
-- Added pseudocode to the Graoh.cpp class (Steven)
+- Added pseudocode to the Graph.cpp class (Steven)
 - Added helper function to FW function, adjusted syntax to FW, changed position ints for City objects to doubles. (Andrew)
 
 12/07
