@@ -11,11 +11,11 @@ class Graph {
 	
 		vector<Edge> getEdges();
 		vector<City> getCities();
-	private:
 		vector<vector<double>> FW();
-		vector<vector<double>> dijkstras(); // change vectors
+		vector<vector<double>> dijkstras(City s); // change vectors
         vector<vector<double>> BFS(Graph G, City s, City e);
 		int getIndex(City c);
+	private:
 		vector<Edge> edges_;
 		vector<City> cities_;
 };
