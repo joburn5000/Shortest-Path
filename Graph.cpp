@@ -17,6 +17,7 @@ Public:
 #include <vector>
 #include <queue>
 #include <map>
+#include <utility>
 #include <limits>
 
 #include "Graph.h"
@@ -49,33 +50,36 @@ vector<vector<double>> Graph::FW() {
     return dist;
 }
  
-vector<vector<double>> Graph::dijkstras(City s) { // use vectors
-    vector<vector<double>> output;
+map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
+    map<City, pair<City, double>> output;
     map<City, double> d;
-    vector<City> p;
+    map<City, City> p;
     double infinity = 99999999;
     for(City v : cities_) {
         d[v] = infinity;
-        p.push_back(v);
     }
     d[s] = 0;
-    priority_queue<double> Q; //use  queue
+    priority_queue<pair<double, City>, vector<pair<double, City>>, greater<double>> Q; //use  queue
     for(City x : s.get_adj_cities()) {
-        Q.push(s.getDistance(x));
+        pair<double, City> insert(s.getDistance(x), x);
+        Q.push(insert);
     }
-    City G;
-    for(unsigned i = 0; i < G.get_adj_cities().size(); i++) { // what is G
-        City u; // @todo change
-        //City u = Q.removeMin(); // throwing error
+    for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
+        City u = Q.top().second; // @todo change
         for(City v : u.get_adj_cities()) {
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    Q.push(v.getDistance(x));
+                    pair<double, City> insert(v.getDistance(x), x);
+                    Q.push(insert);
                 }
-                p[getIndex(v)] = u; // used to be p[v]
+                p[v] = u; // used to be p[v]
             }
         }
+    }
+    for(City c : cities_) {
+        pair<City, double> outputpair;
+        output[c] = outputpair;
     }
     return output;
 }

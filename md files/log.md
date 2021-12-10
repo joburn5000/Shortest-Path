@@ -20,4 +20,7 @@
 12/08
 - Finished connect_cities function and added a check_connections function (Josh)
 - Finished FW function to suit vectors. (Andrew)
-- Nearly completed the Dijstras algorithm, making changes to the queue and array implentations inside (Steven)
+- Nearly completed the Dijkstras algorithm, making changes to the queue and array implentations inside (Steven)
+
+12/10
+- Finished Dijkstras algorithm (may need a little debugging), changed return type (Steven)
