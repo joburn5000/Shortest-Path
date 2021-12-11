@@ -15,7 +15,6 @@ int main() {
         cout<<i+1<<") ";
         city_list[i].print_adj_cities();
     }
-    d.check_connections(city_list);
     bool flag = city_list[0]>city_list[1];
     cout<<flag<<endl;
     return 0;

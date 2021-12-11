@@ -18,9 +18,6 @@ public:
     vector<City> create_city_list(vector<vector<string>> data);
     // connects all cities together
     vector<Edge> connect_cities(vector<City>& city_list);
-    // checks all cities are connected both ways and that there are no duplicates
-    // 1 = good, 0 = something wrong
-    bool check_connections(vector<City>& city_list);
 private:
 
 };
