@@ -66,6 +66,7 @@ map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
     }
     for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
         City u = Q.top().second; // @todo change
+        Q.pop();
         for(City v : u.get_adj_cities()) {
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
