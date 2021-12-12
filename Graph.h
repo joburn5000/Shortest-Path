@@ -16,7 +16,7 @@ using namespace std;
 class Graph {
 	public:
 		Graph();
-	
+        Graph(vector<City> cities, vector<Edge> edges);
 		vector<Edge> getEdges();
 		vector<City> getCities();
 		vector<vector<double>> FW();

@@ -16,7 +16,20 @@ Public:
 #include "Graph.h"
 
 using namespace std;
+
+
+Graph::Graph(vector<City> cities, vector<Edge> edges) {
+    cities_ = cities;
+    edges_ = edges;
+}
  
+vector<Edge> Graph::getEdges() {
+    return edges_;
+}
+vector<City> Graph::getCities() {
+    return cities_;
+}
+
 vector<vector<double>> Graph::FW() {
     vector<vector<double>> dist;
     for (unsigned i = 0; i < cities_.size(); i++) {
@@ -26,7 +39,7 @@ vector<vector<double>> Graph::FW() {
         }
         dist.push_back(inner);
     }
-    for (City c : cities_) {
+    for (City c : cities_) { 
         dist[getIndex(c)][getIndex(c)] = 0.0;
     }
     for (Edge e : edges_) {

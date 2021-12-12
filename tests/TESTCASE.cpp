@@ -98,3 +98,21 @@ bool test::check_add_adj_city(City a) {
         return 0;
     }
 }
+
+bool test::check_algorithm_results(Graph graph) {
+    vector<City> city_list = graph.getCities();
+    vector<vector<double>> FW_results = graph.FW();
+    for (unsigned i = 0; i < 1; i++) {
+        City origin = city_list[i];
+        map<City, pair<City, double>> dijkstras_results = graph.dijkstras(origin);
+        for (unsigned j = i+1; j < 2; j++) {
+            City destination = city_list[j];
+            double FW_distance = FW_results[i][j];
+            double dijkstras_distance = dijkstras_results[destination].second;
+            if (FW_distance != dijkstras_distance) {
+                cout<<"difference with "<<origin.getName()<<" to "<<destination.getName()<<endl;
+            }
+        }
+    }
+    return 1;
+}

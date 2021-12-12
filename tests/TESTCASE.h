@@ -22,6 +22,8 @@ public:
     bool check_get_distance(City a, City b);
     // check that the size of adj cities goes up when you add a city
     bool check_add_adj_city(City a);
+    // compares the results from FW and Dikjstra's Algorithms
+    bool check_algorithm_results(Graph graph);
 private:
 };
 
