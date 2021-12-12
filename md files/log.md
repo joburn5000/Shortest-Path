@@ -28,3 +28,4 @@
 12/11
 - Fixed a bug with the output of Dijkstras (Steven)
 - Began writing test cases (Josh)
+- Removed some unnecessary initialization to optimize FW runtime. (Andrew)

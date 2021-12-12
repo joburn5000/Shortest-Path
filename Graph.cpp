@@ -23,15 +23,8 @@ Public:
 #include "Graph.h"
 using namespace std;
  
-vector<vector<double>> Graph::FW() {
+vector<vector<double> > Graph::FW() {
     vector<vector<double>> dist;
-    for (unsigned i = 0; i < cities_.size(); i++) {
-        vector<double> inner;
-        for (unsigned j = 0; j < cities_.size(); j++) {
-            inner.push_back(numeric_limits<double>::infinity());
-        }
-        dist.push_back(inner);
-    }
     for (City c : cities_) {
         dist[getIndex(c)][getIndex(c)] = 0.0;
     }
@@ -50,7 +43,7 @@ vector<vector<double>> Graph::FW() {
     return dist;
 }
  
-map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
+map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
     map<City, pair<City, double>> output;
     map<City, double> d;
     map<City, City> p;
@@ -87,7 +80,7 @@ map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
     return output;
 }
     
-vector<vector<double>> Graph::BFS (Graph G, City s, City e) {
+vector<vector<double> > Graph::BFS (Graph G, City s, City e) {
     vector<vector<double>> output;
     queue<City> q; // queue
     vector<City> path;
