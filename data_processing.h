@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <map>
 using namespace std;
 
 class data_processing {
@@ -17,7 +18,10 @@ public:
     // creates a list of cities
     vector<City> create_city_list(vector<vector<string>> data);
     // connects all cities together
-    vector<Edge> connect_cities(vector<City>& city_list);
-private:
+    // creates a map
+    map<City, vector<City>> connect_cities(vector<City> city_list);
 
+    vector<Edge> get_edges();
+private:
+    vector<Edge> edges_;
 };

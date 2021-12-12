@@ -17,13 +17,13 @@ class test {
 public:
     test();
     // checks all cities are connected both ways and that there are no duplicates
-    bool check_connections(vector<City>& city_list);
+    bool check_connections(vector<City>& city_list, map<City, vector<City>> adj);
     // checks that the distance calculator works
     bool check_get_distance(City a, City b);
     // check that the size of adj cities goes up when you add a city
-    bool check_add_adj_city(City a);
+    bool check_add_adj_city(City a, map<City, vector<City>> adj);
     // compares the results from FW and Dikjstra's Algorithms
-    bool check_algorithm_results(Graph graph);
+    bool check_algorithm_results(Graph graph, map<City, vector<City>> adj);
 private:
 };
 
