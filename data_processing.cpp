@@ -50,23 +50,28 @@ vector<Edge> data_processing::connect_cities(vector<City>& city_list) {
     vector<Edge> edges;
     for (int i = 0; i < city_list.size(); i++) {
         for (int j = 0; j < city_list.size(); j++) {
-            int dist = city_list[i].getDistance(city_list[j]);
+            double dist = city_list[i].getDistance(city_list[j]);
             if (city_list[i].getName() != city_list[j].getName() && dist < 6) {
                 city_list[i].add_adj_city(city_list[j]);
                 Edge new_edge(city_list[i], city_list[j]);
                 edges.push_back(new_edge);
             }
         }
-    }
-    for (int i = 0; i < city_list.size(); i++) {
-        if (city_list[i].get_adj_cities().size() < 3) {
+        if (city_list[i].get_adj_cities().size() < 4) {
             for (int j = 0; j < city_list.size(); j++) {
-                int dist = city_list[i].getDistance(city_list[j]);
-                if (city_list[i].getName() != city_list[j].getName() && dist >= 6 && dist < 10) {
+                double dist = city_list[i].getDistance(city_list[j]);
+                if (city_list[i].getName() != city_list[j].getName() && dist >= 6 && dist < 8) {
                     city_list[i].add_adj_city(city_list[j]);
                     Edge new_edge(city_list[i], city_list[j]);
                     edges.push_back(new_edge);
-                    if (city_list[j].get_adj_cities().size() >= 3) {
+                    bool flag = true;
+                    string name = city_list[i].getName();
+                    for (City adj_city : city_list[j].get_adj_cities()) {
+                        if (adj_city.getName() == name) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
                         city_list[j].add_adj_city(city_list[i]);
                         Edge new_edge_2(city_list[j], city_list[i]);
                         edges.push_back(new_edge_2);
@@ -74,6 +79,32 @@ vector<Edge> data_processing::connect_cities(vector<City>& city_list) {
                 }
             }
         }
+        if (city_list[i].get_adj_cities().size() < 5) {
+            for (int j = 0; j < city_list.size(); j++) {
+                double dist = city_list[i].getDistance(city_list[j]);
+                if (city_list[i].getName() != city_list[j].getName() && dist >= 8 && dist < 12) {
+                    city_list[i].add_adj_city(city_list[j]);
+                    Edge new_edge(city_list[i], city_list[j]);
+                    edges.push_back(new_edge);
+                    bool flag = true;
+                    string name = city_list[i].getName();
+                    for (City adj_city : city_list[j].get_adj_cities()) {
+                        if (adj_city.getName() == name) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        city_list[j].add_adj_city(city_list[i]);
+                        Edge new_edge_2(city_list[j], city_list[i]);
+                        edges.push_back(new_edge_2);
+                    }
+                }
+            }
+        }
+    }
+    
+    for (int i = 0; i < city_list.size(); i++) {
+        
     }
     return edges;
 }

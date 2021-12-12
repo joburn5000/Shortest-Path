@@ -11,5 +11,5 @@ City Edge::getEnd() {
     return end_;
 }
 double Edge::getDist() {
-    return dist_;
+    return start_.getDistance(end_);
 }
