@@ -66,24 +66,25 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
     }
     cout<<2<<endl;
     d[s] = 0;
+    
     priority_queue<pair<double, City>, vector<pair<double, City>>, greater<pair<double, City>>> Q; //use  queue
+    
     for(City x : s.get_adj_cities()) {
         pair<double, City> insert(s.getDistance(x), x);
         Q.push(insert);
     }
     cout<<3<<endl;
+    
+    Q.push(pair<double,City>(0,s));
     for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
         City u = Q.top().second; // @todo change
-        cout<<Q.size()<<endl;
-        cout<<u.getName();
         Q.pop();
+        cout<<Q.size()<<endl;
         for(City v : u.get_adj_cities()) {
-            cout<<42<<endl;
             if(u.getDistance(v) + d[u] < d[v]) {
-                cout<<"100"<<endl;
                 d[v] = u.getDistance(v) + d[u];
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    pair<double, City> insert(v.getDistance(x), x);
+                    pair<double, City> insert(v.getDistance(x)+d[v], x);
                     Q.push(insert);
                 }
                 p[v] = u; // used to be p[v]
