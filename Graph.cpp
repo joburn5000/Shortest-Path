@@ -78,13 +78,17 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
     Q.push(pair<double,City>(0,s));
     for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
         City u = Q.top().second; // @todo change
+        //cout<<d[u]<<endl;
         Q.pop();
-        cout<<Q.size()<<endl;
+        //cout<<Q.size()<<endl;
         for(City v : u.get_adj_cities()) {
+            cout<<v.getName()<<endl;
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
+                cout<<v.get_adj_cities().size()<<endl;
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    pair<double, City> insert(v.getDistance(x)+d[v], x);
+                    cout<<"runs"<<endl;
+                    pair<double, City> insert(v.getDistance(x)+d[u], x);
                     Q.push(insert);
                 }
                 p[v] = u; // used to be p[v]
