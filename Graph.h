@@ -19,9 +19,9 @@ class Graph {
         Graph(vector<City> cities, vector<Edge> edges);
 		vector<Edge> getEdges();
 		vector<City> getCities();
-		vector<vector<double> > FW(map<City, vector<City>> adj);
-		map<City, pair<City, double> > dijkstras(City s, map<City, vector<City>> adj); // change vectors
-        vector<vector<double> > BFS(Graph G, City s, City e, map<City, vector<City>> adj);
+		vector<vector<double>> FW(map<City, vector<City>> adj);
+		map<City, pair<City, double>> dijkstras(City s, map<City, vector<City>> adj); // change vectors
+        double BFS(Graph G, City s, City e, map<City, vector<City>> adj);
 		int getIndex(City c);
 	private:
 		vector<Edge> edges_;

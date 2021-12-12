@@ -104,8 +104,8 @@ map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> 
     return output;
 }
     
-vector<vector<double> > Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
-    vector<vector<double>> output;
+double Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
+    double dist;
     queue<City> q; // queue
     vector<City> path;
     map<City, bool> explored;
@@ -130,7 +130,7 @@ vector<vector<double> > Graph::BFS (Graph G, City s, City e, map<City, vector<Ci
             }
         }
     }
-    return output;
+    return dist;
 }
  
 // Helper function
