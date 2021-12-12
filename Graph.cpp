@@ -81,7 +81,12 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
         //cout<<d[u]<<endl;
         Q.pop();
         //cout<<Q.size()<<endl;
-        for(City v : u.get_adj_cities()) {
+        for(City w : u.get_adj_cities()) {
+            for(City p : cities_) {
+                if((w.getLongitude() == p.getLongitude()) && (w.getLatitude() != p.getLatitude())) {
+                    City v = p;
+                }
+            }
             cout<<v.getName()<<endl;
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
