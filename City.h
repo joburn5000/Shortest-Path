@@ -10,7 +10,7 @@ using namespace std;
 class City {
 	public:
 		City();
-		City(string name, double latitude_, double longitude_);
+		City(string name, double latitude_, double longitude_, vector<City> adj_cities_);
 		string getName();
         double getLatitude() const;
         double getLongitude();

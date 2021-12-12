@@ -6,10 +6,11 @@ City::City() {
     latitude = 0.0;
     longitude = 0.0;
 }
-City::City(string name, double latitude_, double longitude_) {
+City::City(string name, double latitude_, double longitude_, vector<City> adj_cities_) {
     city_name = name;
     latitude = latitude_;
     longitude = longitude_;
+    adj_cities = adj_cities_;
 }
 string City::getName() {
     return city_name;
