@@ -88,8 +88,10 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
                 cout<<v.get_adj_cities().size()<<endl;
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
                     cout<<"runs"<<endl;
-                    pair<double, City> insert(v.getDistance(x)+d[u], x);
-                    Q.push(insert);
+                    if((x.getLongitude() != v.getLongitude()) || (x.getLatitude() != v.getLatitude())) {
+                        pair<double, City> insert(v.getDistance(x)+d[u], x);
+                        Q.push(insert);
+                    }
                 }
                 p[v] = u; // used to be p[v]
             }
