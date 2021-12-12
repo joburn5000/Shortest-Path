@@ -77,6 +77,7 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
         cout<<41<<endl;
         Q.pop();
         for(City v : u.get_adj_cities()) {
+            cout<<42<<endl;
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
