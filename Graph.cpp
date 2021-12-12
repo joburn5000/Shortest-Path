@@ -13,23 +13,16 @@ Public:
        vector<City> cities_;
 } # Graph.cpp
 */
-#include "Graph.h"
-
-using namespace std;
-
-
-Graph::Graph(vector<City> cities, vector<Edge> edges) {
-    cities_ = cities;
-    edges_ = edges;
-}
  
-vector<Edge> Graph::getEdges() {
-    return edges_;
-}
-vector<City> Graph::getCities() {
-    return cities_;
-}
+#include <vector>
+#include <queue>
+#include <map>
+#include <utility>
+#include <limits>
 
+#include "Graph.h"
+using namespace std;
+ 
 vector<vector<double>> Graph::FW() {
     vector<vector<double>> dist;
     for (unsigned i = 0; i < cities_.size(); i++) {
@@ -39,7 +32,7 @@ vector<vector<double>> Graph::FW() {
         }
         dist.push_back(inner);
     }
-    for (City c : cities_) { 
+    for (City c : cities_) {
         dist[getIndex(c)][getIndex(c)] = 0.0;
     }
     for (Edge e : edges_) {
@@ -66,22 +59,18 @@ map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
         d[v] = infinity;
     }
     d[s] = 0;
-    priority_queue<pair<double, City>, vector<pair<double, City>>, greater<pair<double, City>>> Q; //use  queue
+    priority_queue<pair<double, City>, vector<pair<double, City>>, greater<double>> Q; //use  queue
     for(City x : s.get_adj_cities()) {
-        pair<double, City> insert;
-        insert.first = s.getDistance(x);
-        insert.second = x;
+        pair<double, City> insert(s.getDistance(x), x);
         Q.push(insert);
     }
-    for(unsigned i = 0; i < cities_.size(); i++) { // what is G
+    for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
         City u = Q.top().second; // @todo change
         for(City v : u.get_adj_cities()) {
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
                 for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    pair<double, City> insert;
-                    insert.first = v.getDistance(x);
-                    insert.second = x;
+                    pair<double, City> insert(v.getDistance(x), x);
                     Q.push(insert);
                 }
                 p[v] = u; // used to be p[v]
@@ -90,6 +79,8 @@ map<City, pair<City, double>> Graph::dijkstras(City s) { // use vectors
     }
     for(City c : cities_) {
         pair<City, double> outputpair;
+        outputpair.first = p[c];
+        outputpair.second = d[c];
         output[c] = outputpair;
     }
     return output;

@@ -24,3 +24,7 @@
 
 12/10
 - Finished Dijkstras algorithm (may need a little debugging), changed return type (Steven)
+
+12/11
+- Fixed a bug with the output of Dijkstras (Steven)
+- Began writing test cases (Josh)
