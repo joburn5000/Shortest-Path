@@ -84,6 +84,24 @@ algorithms, traversal, and print adjacent cities. To show the
 results of running the algorithms, use compare_algorithm_results
 You also have the ability to use the graph to run test cases, 
 as described below.
+
+
+Building and running code:
+
+- Included in the file is a Makefile that allows for easy
+  compilation of the code. To use the available commands
+  "make" and "make test," install Makefile Tools (instructions 
+  here: 
+  https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/
+- The Makefile will create executables main.exe after running
+  make and test.exe after running make test. These can be run
+  using ./main and ./test respectively
+- You can also compile and run the code without the Makefile,
+  using whatever method is easiest for you. On how to build cpp 
+  files:
+  https://www.tutorialspoint.com/How-to-compile-and-run-the-Cplusplus-program
+  * Be sure to compile all files, including those in the tests 
+  folder
  
  
  (3) Full instructions how to build and run your test suite, 
