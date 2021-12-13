@@ -80,9 +80,10 @@ Folders:
 
 
 You can now run any function in the graph class, including the
-algorithms, traversal, and print adjacent cities. You also have
-the ability to use the graph in test cases, as described below.
- 
+algorithms, traversal, and print adjacent cities. To show the
+results of running the algorithms, use compare_algorithm_results
+You also have the ability to use the graph to run test cases, 
+as described below.
  
  
  (3) Full instructions how to build and run your test suite, 
