@@ -1,13 +1,23 @@
-Prior to 12/03:
+First week of November (11/1 - 11/7):
+- Forming team
 - Looking through projects and picking one
-- Changing from A* to FW and Dijkstra's
-- Creating project proposal and contract
 - Brainstorming session
+- Creating project proposal and contract
 
-12/03
+Second week of November (11/8 - 11/14)
+- Changing from A* to FW and Dijkstra's
+
+Thid week of November: (11/15 - 11/21)
+- Team brainstorming
+- Made a plan for going forward
+
+Week of Thanksgiving break (11/22-28):
+- Learning all algorithms and traveral
 - Created FW and other pseudocode (Andrew)
 - Created Dijkstra pseudocode (Steven)
 - Created BFS pseudocode (Josh)
+
+12/03
 - Team meeting with John Li
 
 12/04
