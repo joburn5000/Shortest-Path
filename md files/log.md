@@ -7,7 +7,7 @@ First week of November (11/1 - 11/7):
 Second week of November (11/8 - 11/14)
 - Changing from A* to FW and Dijkstra's
 
-Thid week of November: (11/15 - 11/21)
+Third week of November: (11/15 - 11/21)
 - Team brainstorming
 - Made a plan for going forward
 
