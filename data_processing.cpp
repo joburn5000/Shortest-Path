@@ -34,7 +34,7 @@ City data_processing::create_city(vector<string> cells) {
     string city_name = cells[0];
     double latitude = stod(cells[6]);
     double longitude = stod(cells[7]);
-    City new_city(city_name, latitude, longitude, vector<City>{});
+    City new_city(city_name, latitude, longitude);
     return new_city;
 }
 
