@@ -1,3 +1,9 @@
+Prior to 12/03:
+- Looking through projects and picking one
+- Changing from A* to FW and Dijkstra's
+- Creating project proposal and contract
+- Brainstorming session
+
 12/03
 - Created FW and other pseudocode (Andrew)
 - Created Dijkstra pseudocode (Steven)
@@ -29,3 +35,11 @@
 - Fixed a bug with the output of Dijkstras (Steven)
 - Began writing test cases (Josh)
 - Removed some unnecessary initialization to optimize FW runtime. (Andrew)
+
+12/12
+- Debugged and compled algorithms (Josh & Steven)
+- Finished BFS  (Josh)
+- Wrote test cases (Josh)
+
+12/13
+- Finalized code (Josh)
