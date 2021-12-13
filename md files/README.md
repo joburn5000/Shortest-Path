@@ -121,6 +121,33 @@ Building and running code:
   * Be sure to compile all files, including those in the tests 
   folder
  
+ Algorithm Input and Output Information
+ 
+ FW(): Floyd-Warshall's Algorithm)
+ 
+ - Input: nothing. All the information is found within the class
+   that contains FW(), the Graph class 
+ - Output: a 2D matrix of doubles (distances) To get a distance,
+   get the indexes of your start and end city using the helper
+   function getIndex(city). You can find any distance by accessing
+   fw[i]\[j] where i is the start index and j is the end index and
+   fw is the result of calling FW()
+ 
+ dijkstras(City s): Dijkstra's Algorithm
+ 
+ - Input: City s which is the city of origin
+ - Output: a map that graphs a city to distance. You can access
+   the distance from the origin city to any other city by
+   calling d[c] where c is the destination city and d is the
+   result of calling dijkstras(City s)
+   
+ BFS(City s, City e): Breadth-First Traversal
+ 
+ - Inputs: City s and City e which are the start and end cities
+   respectively
+ - Output: a double (distance) from City s to City e
+
+
  
  (3) Full instructions how to build and run your test suite, 
  including a general description on what tests you have created.
