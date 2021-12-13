@@ -76,7 +76,7 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
     cout<<3<<endl;
     
     Q.push(pair<double,City>(0,s));
-    for(unsigned i = 0; i < this->getCities().size(); i++) { // what is G
+    while(!Q.empty()) { // what is G
         City u = Q.top().second; // @todo change
         //cout<<d[u]<<endl;
         Q.pop();
