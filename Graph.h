@@ -25,6 +25,9 @@ class Graph {
 		int getIndex(City c);
         void add_map(map<City, vector<City>> adj_);
         map<City, vector<City>> get_map();
+        // prints out a comparison
+        void print_algorithm_results(City start);
+        void print_adj_cities();
 	private:
 		vector<Edge> edges_;
 		vector<City> cities_;

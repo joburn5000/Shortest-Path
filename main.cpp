@@ -4,18 +4,15 @@ using namespace std;
 
 int main() {
     data_processing d;
-    vector<vector<string>> data;
-    data = d.process_data("data/uscities.csv");
-    vector<City> city_list;
-    city_list = d.create_city_list(data);
+    vector<vector<string>> data = d.process_data("data/uscities.csv");
+    vector<City> city_list = d.create_city_list(data);
+    map<City, vector<City>> adj = d.connect_cities(city_list);
+    vector<Edge> edge_list = d.get_edges();
+    Graph graph(city_list, edge_list);
+    graph.add_map(adj);
 
-    d.connect_cities(city_list);
-    //city_list[0].print_adj_cities();
-    for (int i = 0; i < city_list.size(); i++) {
-        cout<<i+1<<") ";
-        city_list[i].print_adj_cities();
-    }
-    bool flag = city_list[0]>city_list[1];
-    cout<<flag<<endl;
+    graph.print_adj_cities();
+    graph.print_algorithm_results(city_list[0]);
+
     return 0;
 }

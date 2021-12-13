@@ -15,24 +15,18 @@ int main() {
     Graph graph(city_list, edge_list);
     graph.add_map(adj);
     
-    //TESTCASE.check_connections(city_list, adj);
-    /*for (int i = 0; i < city_list.size(); i++) {
-        cout<<i+1<<") ";
-        cout<<city_list[i].getName()<<" has "<<adj[city_list[i]].size()<<" : ";
-        for (City city : adj[city_list[i]]) {
-            cout<<city.getName()<<" ";
-        }
-        cout<<endl;
-    }*/
+    
+    
+    bool test_0 = TESTCASE.check_connections(graph);
     bool test_1 = TESTCASE.check_get_distance(city_list[0], city_list[1]);
     bool test_2 = TESTCASE.check_get_distance(city_list[5], city_list[6]);
     bool test_3 = TESTCASE.check_add_adj_city(graph, city_list[0]);
-    TESTCASE.compare_algorithm_results(graph, city_list[0]);
-    bool test_4 = TESTCASE.check_algorithm_results(graph);
+    bool test_4 = TESTCASE.check_FW_dijkstras(graph);
+    bool test_5 = TESTCASE.check_BFS(graph);
 
-    int total = test_1 + test_2 + test_3 + test_4;
+    int total = test_0 + test_1 + test_2 + test_3 + test_4 + test_5;
 
-    cout<<"tests passed: "<<total<<"/4"<<endl;
+    cout<<"tests passed: "<<total<<"/6"<<endl;
     cout<<"_________________________________________________________"<<endl<<endl;
 
     // FW Test:

@@ -150,3 +150,40 @@ void Graph::add_map(map<City, vector<City>> adj_) {
 map<City, vector<City>> Graph::get_map() {
     return adj;
 }
+
+void Graph::print_algorithm_results(City start) {
+    cout<<"_________________________________________________________"<<endl;
+    cout<<"compare_algorithm_results for "<<start.getName()<<endl;
+    cout<<"_________________________________________________________"<<endl;
+    vector<vector<double>> FW_results = FW();
+    vector<City> city_list = cities_;
+    bool flag = true;
+    int start_index = getIndex(start);
+    map<City, pair<City, double>> Dijkstra_results = dijkstras(start);
+    for (int i = 1; i < city_list.size(); i++) {
+        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
+        cout<<"FW:  "<<69*FW_results[start_index][i]<<" miles"<<endl;
+        cout<<"Dik: "<<69*Dijkstra_results[city_list[i]].second<<" miles"<<endl;
+        cout<<"BFS: "<<69*BFS(start, city_list[i])<<" miles"<<endl;
+    }
+    cout<<"_________________________________________________________"<<endl;
+}
+void Graph::print_adj_cities() {
+    cout<<"_________________________________________________________"<<endl;
+    cout<<"Connections between cities:"<<endl;
+    cout<<"_________________________________________________________"<<endl;
+    for (int i = 0; i < cities_.size(); i++) {
+        cout<<i+1<<") ";
+        cout<<cities_[i].getName()<<" has "<<adj[cities_[i]].size()<<" connections: ";
+        for (int j = 0; j < adj[cities_[i]].size(); j++) {
+            if (j == adj[cities_[i]].size()-1) {
+                cout<<cities_[j].getName()<<endl;
+            }
+            else {
+                cout<<cities_[j].getName()<<", ";
+                if (j == adj[cities_[i]].size()-2) cout<<"and ";
+            }
+        }
+    }
+    cout<<"_________________________________________________________"<<endl;
+}

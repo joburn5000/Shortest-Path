@@ -23,9 +23,9 @@ public:
     // check that the size of adj cities goes up when you add a city
     bool check_add_adj_city(Graph graph, City a);
     // compares the results from FW and Dikjstra's Algorithms
-    bool check_algorithm_results(Graph graph);
-    // prints out a comparison
-    void compare_algorithm_results(Graph graph, City start);
+    bool check_FW_dijkstras(Graph graph);
+    // compares the results from BFS to FW and Dikjstra's
+    bool check_BFS(Graph graph);
 private:
 };
 

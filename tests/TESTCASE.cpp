@@ -63,12 +63,12 @@ bool test::check_get_distance(City a, City b) {
     double long_a = a.getLongitude();
     double lat_b = b.getLatitude();
     double long_b = b.getLongitude();
-    double expected_distance = sqrt(pow(lat_a-lat_b,2)+pow(long_a-long_b,2));
-    double calculated_distance = a.getDistance(b);
+    double expected_distance = 69*sqrt(pow(lat_a-lat_b,2)+pow(long_a-long_b,2));
+    double calculated_distance = 69*a.getDistance(b);
     cout<<"calculating the straight-shot pythagorean distance from"<<endl;
     cout<<a.getName()<<" to "<<b.getName()<<"..."<<endl;
-    cout<<"expected distance: "<<expected_distance<<endl;
-    cout<<"calculated distance: "<<calculated_distance<<endl;
+    cout<<"expected distance: "<<expected_distance<<" miles"<<endl;
+    cout<<"calculated distance: "<<calculated_distance<<" miles"<<endl;
     if (expected_distance == calculated_distance) {
         cout<<"=> test passed"<<endl;
         cout<<"_________________________________________________________"<<endl;
@@ -103,7 +103,7 @@ bool test::check_add_adj_city(Graph graph, City a) {
     }
 }
 
-bool test::check_algorithm_results(Graph graph) {
+bool test::check_FW_dijkstras(Graph graph) {
     cout<<"_________________________________________________________"<<endl; 
     cout<<"TESTCASE: check_algorithm_results"<<endl;
     cout<<"_________________________________________________________"<<endl;
@@ -116,8 +116,8 @@ bool test::check_algorithm_results(Graph graph) {
         for (int j = 0; j < city_list.size(); j++) {
             if (FW_results[i][j] - Dijkstra_results[city_list[j]].second > .001) {
                 cout<<city_list[i].getName()<<" "<<city_list[j].getName()<<endl;
-                cout<<"FW:  "<<FW_results[i][j]<<endl;
-                cout<<"Dik: "<<Dijkstra_results[city_list[j]].second<<endl;
+                cout<<"FW:  "<<69*FW_results[i][j]<<" miles"<<endl;
+                cout<<"Dik: "<<69*Dijkstra_results[city_list[j]].second<<" miles"<<endl;
                 f = false;
             }
         }
@@ -128,16 +128,28 @@ bool test::check_algorithm_results(Graph graph) {
     return f;
 }
 
-void test::compare_algorithm_results(Graph graph, City start) {
-    vector<vector<double>> FW_results = graph.FW();
+bool test::check_BFS(Graph graph) {
+    cout<<"_________________________________________________________"<<endl; 
+    cout<<"TESTCASE: check_algorithm_results"<<endl;
+    cout<<"_________________________________________________________"<<endl;
+    bool f = true;
     vector<City> city_list = graph.getCities();
-    bool flag = true;
-    int start_index = graph.getIndex(start);
-    map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(start);
-    for (int i = 1; i < city_list.size(); i++) {
-        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
-        cout<<"FW:  "<<FW_results[start_index][i]<<endl;
-        cout<<"Dik: "<<Dijkstra_results[city_list[i]].second<<endl;
-        cout<<"BFS: "<<graph.BFS(start, city_list[i])<<endl;
+    vector<vector<double>> FW_results = graph.FW();
+    for (int i = 1; i < city_list.size()-1; i++) {
+        int start_index = graph.getIndex(city_list[i]);
+        for (int j = 0; j < city_list.size(); j++) {
+            double BFS_results = graph.BFS(city_list[i], city_list[j]);
+            if (BFS_results - FW_results[i][j] < -.001) {
+                cout<<city_list[i].getName()<<" "<<city_list[j].getName()<<endl;
+                cout<<"FW:  "<<69*FW_results[i][j]<<" miles"<<endl;
+                cout<<"BFS: "<<69*BFS_results<<" miles"<<endl;
+                f = false;
+            }
+        }
     }
+    if (f) cout<<"BFS is always >= FW and Dijkstra's"<<endl<<"=> test passed"<<endl;
+    else cout<<"BFS is not always >= FW and Dijkstra's"<<endl<<"test failed"<<endl;
+    cout<<"_________________________________________________________"<<endl;
+    return f;
 }
+
