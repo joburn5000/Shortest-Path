@@ -105,34 +105,38 @@ map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> 
 }
     
 double Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
-    double dist;
+    cout<<s.getName()<<" to "<<e.getName()<<endl;
+    double dist = 0;
     queue<City> q; // queue
     vector<City> path;
     map<City, bool> explored;
-    map<City, bool> previous;
+    map<City, City> previous;
     for (City v : cities_) {
         explored[v] = false;
-        previous[v] = NULL;
+        previous[v] = City();
     }
     explored[s] = true;
     q.push(s);
     while (!q.empty()) {
-        City v; // change
-        if (v.getName() == e.getName()) {
-            path.push_back(v);
-            // return path; path isn't correct type
-        }
+        City v = q.front();
+        if (v.getName() == e.getName()) break;
         q.pop();
-        for (City adjCity: adj[cities_[getIndex(v)]]) { // made changes to fix bug, not sure if this is what you wanted
-            if (!explored[v]) {
-                explored[v] = true;
-                q.push(v);
+        for (City adjCity: adj[v]) {
+            if (!explored[adjCity]) {
+                explored[adjCity] = true;
+                q.push(adjCity);
+                previous[adjCity] = v;
             }
         }
     }
+    City* temp = &e;
+    while (temp->getName() != s.getName()) {
+        City prevCity = previous[e];
+        dist += temp->getDistance(prevCity);
+        *temp = prevCity;
+    }
     return dist;
 }
- 
 // Helper function
 int Graph::getIndex(City c) {
     for (unsigned i = 0; i < cities_.size(); i++) {

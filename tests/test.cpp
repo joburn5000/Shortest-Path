@@ -26,6 +26,8 @@ int main() {
     //TESTCASE.check_get_distance(city_list[0], city_list[1]);
     //TESTCASE.check_get_distance(city_list[5], city_list[6]);
     //TESTCASE.check_add_adj_city(city_list[0]);
+
+    // FW Test:
     /*
     vector<vector<double>> FW_results = graph.FW(adj);
     bool flag = true;
@@ -40,14 +42,24 @@ int main() {
         }
         cout<<endl;
     }*/
-    //for (City origin : city_list) {
+    
+
+    //Dijkstra's Test:
+    /* 
     map<City, pair<City, double>> dijkstras_results = graph.dijkstras(city_list[0], adj);
     for (City city : city_list) {
         cout<<city.getName()<<" ";
         cout<<dijkstras_results[city].second<<endl;
     }
-    //}
+    */
     
+    // BFS Test:
+    /*
+    for (unsigned i = 0; i < city_list.size(); i++) {
+        double BFS_result = graph.BFS(graph, city_list[0], city_list[i], adj);
+        cout<<"Distance from "<<city_list[0].getName()<<" to "<<city_list[i].getName()<<": "<<BFS_result<<endl;
+    }
+    */
     //TESTCASE.check_algorithm_results(graph);
     return 0;
 };
