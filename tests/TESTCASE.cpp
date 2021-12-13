@@ -123,9 +123,25 @@ void test::compare_algorithm_results(vector<City> city_list, Graph graph, City s
     vector<vector<double>> FW_results = graph.FW(adj);
     bool flag = true;
     int start_index = graph.getIndex(start);
+    map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(start, adj);
     for (int i = 1; i < city_list.size(); i++) {
         cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
         cout<<"FW:  "<<FW_results[start_index][i]<<endl;
+        cout<<"Dik: "<<Dijkstra_results[city_list[i]].second<<endl;
         cout<<"BFS: "<<graph.BFS(graph, start, city_list[i], adj)<<endl;;
     }
+    bool f = true;
+    for (int i = 1; i < city_list.size()-1; i++) {
+        map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(city_list[i], adj);
+        int start_index = graph.getIndex(city_list[i]);
+        for (int j = 0; j < city_list.size(); j++) {
+            if (FW_results[i][j] - Dijkstra_results[city_list[j]].second > .001) {
+                cout<<city_list[i].getName()<<" "<<city_list[j].getName()<<endl;
+                cout<<"FW:  "<<FW_results[i][j]<<endl;
+                cout<<"Dik: "<<Dijkstra_results[city_list[j]].second<<endl;
+                f = false;
+            }
+        }
+    }
+    cout<<"flag is "<<f<<endl;
 }
