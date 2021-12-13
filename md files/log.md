@@ -40,6 +40,10 @@ Prior to 12/03:
 - Debugged and compled algorithms (Josh & Steven)
 - Finished BFS  (Josh)
 - Wrote test cases (Josh)
+- Written report
+- Made slides
 
 12/13
 - Finalized code (Josh)
+- Finished presentation
+- Recorded video
