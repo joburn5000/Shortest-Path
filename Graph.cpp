@@ -35,7 +35,7 @@ vector<City> Graph::getCities() {
     return cities_;
 }
  
-vector<vector<double> > Graph::FW() {
+vector<vector<double> > Graph::FW(map<City, vector<City>> adj) {
     vector<vector<double>> dist(cities_.size(), vector<double>(cities_.size(), 9999));
     for (City c : cities_) {
         dist[getIndex(c)][getIndex(c)] = 0.0;
@@ -55,46 +55,39 @@ vector<vector<double> > Graph::FW() {
     return dist;
 }
  
-map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
+map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> adj) { // use vectors
     map<City, pair<City, double>> output;
     map<City, double> d;
     map<City, City> p;
     double infinity = 99999999;
-    cout<<1<<endl;
     for(City v : cities_) {
         d[v] = infinity;
     }
-    cout<<2<<endl;
     d[s] = 0;
     
     priority_queue<pair<double, City>, vector<pair<double, City>>, greater<pair<double, City>>> Q; //use  queue
     
-    for(City x : s.get_adj_cities()) {
+    for(City x : adj[s]) {
         pair<double, City> insert(s.getDistance(x), x);
         Q.push(insert);
     }
-    cout<<3<<endl;
     
     Q.push(pair<double,City>(0,s));
     while(!Q.empty()) { // what is G
         City u = Q.top().second; // @todo change
-        //cout<<d[u]<<endl;
         Q.pop();
-        //cout<<Q.size()<<endl;
-        for(City w : u.get_adj_cities()) {
+        for(City w : adj[u]) {
+            City v;
             for(City p : cities_) {
-                if((w.getLongitude() == p.getLongitude()) && (w.getLatitude() != p.getLatitude())) {
-                    City v = p;
+                if(w.getName() == p.getName()) {
+                    v = p;
                 }
             }
-            cout<<v.getName()<<endl;
             if(u.getDistance(v) + d[u] < d[v]) {
                 d[v] = u.getDistance(v) + d[u];
-                cout<<v.get_adj_cities().size()<<endl;
-                for(City x : v.get_adj_cities()) { // add neighbors of this to queue to repeat for next step
-                    cout<<"runs"<<endl;
+                for(City x : adj[v]) { // add neighbors of this to queue to repeat for next step
                     if((x.getLongitude() != v.getLongitude()) || (x.getLatitude() != v.getLatitude())) {
-                        pair<double, City> insert(v.getDistance(x)+d[u], x);
+                        pair<double, City> insert(v.getDistance(x)+d[v], x);
                         Q.push(insert);
                     }
                 }
@@ -102,46 +95,47 @@ map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
             }
         }
     }
-    cout<<4<<endl;
     for(City c : cities_) {
         pair<City, double> outputpair;
         outputpair.first = p[c];
         outputpair.second = d[c];
         output[c] = outputpair;
     }
-    cout<<5<<endl;
     return output;
 }
     
-vector<vector<double> > Graph::BFS (Graph G, City s, City e) {
-    vector<vector<double>> output;
+double Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
+    double dist = 0;
     queue<City> q; // queue
     vector<City> path;
     map<City, bool> explored;
-    map<City, bool> previous;
+    map<City, City> previous;
     for (City v : cities_) {
         explored[v] = false;
-        previous[v] = NULL;
+        previous[v] = City();
     }
     explored[s] = true;
     q.push(s);
     while (!q.empty()) {
-        City v; // change
-        if (v.getName() == e.getName()) {
-            path.push_back(v);
-            // return path; path isn't correct type
-        }
+        City v = q.front();
+        if (v.getName() == e.getName()) break;
         q.pop();
-        for (City adjCity: cities_[getIndex(v)].get_adj_cities()) { // made changes to fix bug, not sure if this is what you wanted
-            if (!explored[v]) {
-                explored[v] = true;
-                q.push(v);
+        for (City adjCity: adj[v]) {
+            if (!explored[adjCity]) {
+                explored[adjCity] = true;
+                q.push(adjCity);
+                previous[adjCity] = v;
             }
         }
     }
-    return output;
+    City* temp = &e;
+    while (temp->getName() != s.getName()) {
+        City prevCity = previous[e];
+        dist += temp->getDistance(prevCity);
+        *temp = prevCity;
+    }
+    return dist;
 }
- 
 // Helper function
 int Graph::getIndex(City c) {
     for (unsigned i = 0; i < cities_.size(); i++) {

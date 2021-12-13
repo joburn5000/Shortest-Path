@@ -3,7 +3,7 @@
 test::test() {
 
 }
-bool test::check_connections(vector<City>& city_list) {
+bool test::check_connections(vector<City>& city_list, map<City, vector<City>> adj) {
     cout<<"_________________________________________________________"<<endl; 
     cout<<"TESTCASE: check_connections"<<endl;
     cout<<"_________________________________________________________"<<endl; 
@@ -11,7 +11,7 @@ bool test::check_connections(vector<City>& city_list) {
     for (City city : city_list) {
         vector<string> data_line;
         string name = city.getName();
-        for (City adj_city : city.get_adj_cities()) {
+        for (City adj_city : adj[city]) {
             data_line.push_back(adj_city.getName());
         }
         data[name] = data_line; 
@@ -19,7 +19,7 @@ bool test::check_connections(vector<City>& city_list) {
     bool everything_good = true;
     for (int i = 0; i < city_list.size(); i++) {
         string name = city_list[i].getName();
-        vector<City> adj_cities = city_list[i].get_adj_cities();
+        vector<City> adj_cities = adj[city_list[i]];
         for (int j = 0; j < adj_cities.size(); j++) {
             string adj_name = adj_cities[j].getName();
             vector<string> adj_adj_cities = data[adj_name];
@@ -78,13 +78,13 @@ bool test::check_get_distance(City a, City b) {
         return 0;
     }
 }
-bool test::check_add_adj_city(City a) {
+bool test::check_add_adj_city(City a, map<City, vector<City>> adj) {
     cout<<"_________________________________________________________"<<endl; 
     cout<<"TESTCASE: check_add_adj_city"<<endl;
     cout<<"_________________________________________________________"<<endl;
-    unsigned original_size = a.get_adj_cities().size();
+    unsigned original_size = adj[a].size();
     a.add_adj_city(a);
-    unsigned final_size = a.get_adj_cities().size();
+    unsigned final_size = adj[a].size();
     cout<<"original number of adj cities: "<<original_size<<endl;
     cout<<"number after adding a city:    "<<final_size<<endl;
     if (final_size-original_size == 1) {
@@ -99,12 +99,13 @@ bool test::check_add_adj_city(City a) {
     }
 }
 
-bool test::check_algorithm_results(Graph graph) {
+bool test::check_algorithm_results(Graph graph, map<City, vector<City>> adj) {
     vector<City> city_list = graph.getCities();
-    vector<vector<double>> FW_results = graph.FW();
+    vector<vector<double>> FW_results = graph.FW(adj);
+    /*
     for (unsigned i = 0; i < 1; i++) {
         City origin = city_list[i];
-        map<City, pair<City, double>> dijkstras_results = graph.dijkstras(origin);
+        map<City, pair<City, double>> dijkstras_results = graph.dijkstras(origin, adj);
         for (unsigned j = i+1; j < 2; j++) {
             City destination = city_list[j];
             double FW_distance = FW_results[i][j];
@@ -114,5 +115,17 @@ bool test::check_algorithm_results(Graph graph) {
             }
         }
     }
+    */
     return 1;
+}
+
+void test::compare_algorithm_results(vector<City> city_list, Graph graph, City start, map<City, vector<City>> adj) {
+    vector<vector<double>> FW_results = graph.FW(adj);
+    bool flag = true;
+    int start_index = graph.getIndex(start);
+    for (int i = 1; i < city_list.size(); i++) {
+        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
+        cout<<"FW:  "<<FW_results[start_index][i]<<endl;
+        cout<<"BFS: "<<graph.BFS(graph, start, city_list[i], adj)<<endl;;
+    }
 }
