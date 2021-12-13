@@ -20,7 +20,6 @@ public:
     // connects all cities together
     // creates a map
     map<City, vector<City>> connect_cities(vector<City> city_list);
-
     vector<Edge> get_edges();
 private:
     vector<Edge> edges_;

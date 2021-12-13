@@ -3,10 +3,12 @@
 test::test() {
 
 }
-bool test::check_connections(vector<City>& city_list, map<City, vector<City>> adj) {
+bool test::check_connections(Graph graph) {
     cout<<"_________________________________________________________"<<endl; 
     cout<<"TESTCASE: check_connections"<<endl;
-    cout<<"_________________________________________________________"<<endl; 
+    cout<<"_________________________________________________________"<<endl;
+    vector<City> city_list = graph.getCities();
+    map<City, vector<City>> adj = graph.get_map();
     map<string, vector<string> > data;
     for (City city : city_list) {
         vector<string> data_line;
@@ -78,12 +80,14 @@ bool test::check_get_distance(City a, City b) {
         return 0;
     }
 }
-bool test::check_add_adj_city(City a, map<City, vector<City>> adj) {
+bool test::check_add_adj_city(Graph graph, City a) {
     cout<<"_________________________________________________________"<<endl; 
     cout<<"TESTCASE: check_add_adj_city"<<endl;
     cout<<"_________________________________________________________"<<endl;
+    vector<City> city_list = graph.getCities();
+    map<City, vector<City>> adj = graph.get_map();
     unsigned original_size = adj[a].size();
-    a.add_adj_city(a);
+    adj[a].push_back(a);
     unsigned final_size = adj[a].size();
     cout<<"original number of adj cities: "<<original_size<<endl;
     cout<<"number after adding a city:    "<<final_size<<endl;
@@ -99,40 +103,15 @@ bool test::check_add_adj_city(City a, map<City, vector<City>> adj) {
     }
 }
 
-bool test::check_algorithm_results(Graph graph, map<City, vector<City>> adj) {
-    vector<City> city_list = graph.getCities();
-    vector<vector<double>> FW_results = graph.FW(adj);
-    /*
-    for (unsigned i = 0; i < 1; i++) {
-        City origin = city_list[i];
-        map<City, pair<City, double>> dijkstras_results = graph.dijkstras(origin, adj);
-        for (unsigned j = i+1; j < 2; j++) {
-            City destination = city_list[j];
-            double FW_distance = FW_results[i][j];
-            double dijkstras_distance = dijkstras_results[destination].second;
-            if (FW_distance != dijkstras_distance) {
-                cout<<"difference with "<<origin.getName()<<" to "<<destination.getName()<<endl;
-            }
-        }
-    }
-    */
-    return 1;
-}
-
-void test::compare_algorithm_results(vector<City> city_list, Graph graph, City start, map<City, vector<City>> adj) {
-    vector<vector<double>> FW_results = graph.FW(adj);
-    bool flag = true;
-    int start_index = graph.getIndex(start);
-    map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(start, adj);
-    for (int i = 1; i < city_list.size(); i++) {
-        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
-        cout<<"FW:  "<<FW_results[start_index][i]<<endl;
-        cout<<"Dik: "<<Dijkstra_results[city_list[i]].second<<endl;
-        cout<<"BFS: "<<graph.BFS(graph, start, city_list[i], adj)<<endl;;
-    }
+bool test::check_algorithm_results(Graph graph) {
+    cout<<"_________________________________________________________"<<endl; 
+    cout<<"TESTCASE: check_algorithm_results"<<endl;
+    cout<<"_________________________________________________________"<<endl;
     bool f = true;
+    vector<City> city_list = graph.getCities();
+    vector<vector<double>> FW_results = graph.FW();
     for (int i = 1; i < city_list.size()-1; i++) {
-        map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(city_list[i], adj);
+        map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(city_list[i]);
         int start_index = graph.getIndex(city_list[i]);
         for (int j = 0; j < city_list.size(); j++) {
             if (FW_results[i][j] - Dijkstra_results[city_list[j]].second > .001) {
@@ -143,5 +122,22 @@ void test::compare_algorithm_results(vector<City> city_list, Graph graph, City s
             }
         }
     }
-    cout<<"flag is "<<f<<endl;
+    if (f) cout<<"all connections are the same"<<endl<<"=> test passed"<<endl;
+    else cout<<"test failed"<<endl;
+    cout<<"_________________________________________________________"<<endl;
+    return f;
+}
+
+void test::compare_algorithm_results(Graph graph, City start) {
+    vector<vector<double>> FW_results = graph.FW();
+    vector<City> city_list = graph.getCities();
+    bool flag = true;
+    int start_index = graph.getIndex(start);
+    map<City, pair<City, double>> Dijkstra_results = graph.dijkstras(start);
+    for (int i = 1; i < city_list.size(); i++) {
+        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
+        cout<<"FW:  "<<FW_results[start_index][i]<<endl;
+        cout<<"Dik: "<<Dijkstra_results[city_list[i]].second<<endl;
+        cout<<"BFS: "<<graph.BFS(start, city_list[i])<<endl;
+    }
 }

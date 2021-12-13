@@ -13,6 +13,7 @@ int main() {
     map<City, vector<City>> adj = d.connect_cities(city_list);
     vector<Edge> edge_list = d.get_edges();
     Graph graph(city_list, edge_list);
+    graph.add_map(adj);
     
     //TESTCASE.check_connections(city_list, adj);
     /*for (int i = 0; i < city_list.size(); i++) {
@@ -23,10 +24,17 @@ int main() {
         }
         cout<<endl;
     }*/
-    //TESTCASE.check_get_distance(city_list[0], city_list[1]);
-    //TESTCASE.check_get_distance(city_list[5], city_list[6]);
-    //TESTCASE.check_add_adj_city(city_list[0]);
-    TESTCASE.compare_algorithm_results(city_list, graph, city_list[0], adj);
+    bool test_1 = TESTCASE.check_get_distance(city_list[0], city_list[1]);
+    bool test_2 = TESTCASE.check_get_distance(city_list[5], city_list[6]);
+    bool test_3 = TESTCASE.check_add_adj_city(graph, city_list[0]);
+    TESTCASE.compare_algorithm_results(graph, city_list[0]);
+    bool test_4 = TESTCASE.check_algorithm_results(graph);
+
+    int total = test_1 + test_2 + test_3 + test_4;
+
+    cout<<"tests passed: "<<total<<"/4"<<endl;
+    cout<<"_________________________________________________________"<<endl<<endl;
+
     // FW Test:
     /*
     vector<vector<double>> FW_results = graph.FW(adj);
@@ -60,6 +68,5 @@ int main() {
         cout<<"Distance from "<<city_list[0].getName()<<" to "<<city_list[i].getName()<<": "<<BFS_result<<endl;
     }
     */
-    //TESTCASE.check_algorithm_results(graph);
     return 0;
 };

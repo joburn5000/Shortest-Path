@@ -35,7 +35,7 @@ vector<City> Graph::getCities() {
     return cities_;
 }
  
-vector<vector<double> > Graph::FW(map<City, vector<City>> adj) {
+vector<vector<double> > Graph::FW() {
     vector<vector<double>> dist(cities_.size(), vector<double>(cities_.size(), 9999));
     for (City c : cities_) {
         dist[getIndex(c)][getIndex(c)] = 0.0;
@@ -55,7 +55,7 @@ vector<vector<double> > Graph::FW(map<City, vector<City>> adj) {
     return dist;
 }
  
-map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> adj) { // use vectors
+map<City, pair<City, double> > Graph::dijkstras(City s) { // use vectors
     map<City, pair<City, double>> output;
     map<City, double> d;
     map<City, City> p;
@@ -104,7 +104,7 @@ map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> 
     return output;
 }
     
-double Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
+double Graph::BFS (City s, City e) {
     double dist = 0;
     queue<City> q; // queue
     vector<City> path;
@@ -142,4 +142,11 @@ int Graph::getIndex(City c) {
         if (cities_[i].getName() == c.getName()) return i;
     }
     return -1;
+}
+
+void Graph::add_map(map<City, vector<City>> adj_) {
+    adj = adj_;
+}
+map<City, vector<City>> Graph::get_map() {
+    return adj;
 }
