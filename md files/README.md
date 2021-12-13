@@ -5,6 +5,17 @@ Final Project for andrewo4-newburn2-beallis3
  
 The code has the following files:
 
+Data
+
+- The data for the code is found in the data folder
+- The data is a CSV file, downloaded from
+  https://simplemaps.com/data/us-cities
+- The CSV file, called "uscities.csv" contains
+  information about cities in America including city name,
+  latitude, longitude. It contained more information as well,
+  but those three were the only ones we needed
+- In our code, we selected the top 50 cities according
+  to population
 
 data_processing.h
 
