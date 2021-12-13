@@ -23,7 +23,7 @@ data_processing.h
 - process_data outputs a 2D matrix of strings given a 
   csv file
 - create_city outputs a city given a vector of strings
-- creat_city_list outputs a list of cities given a
+- create_city_list outputs a list of cities given a
   2D matrix
 - connect_cities connects cities together given a list
   of cities. It creates edges and outputs a map that 
