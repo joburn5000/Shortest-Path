@@ -24,6 +24,8 @@ public:
     bool check_add_adj_city(City a, map<City, vector<City>> adj);
     // compares the results from FW and Dikjstra's Algorithms
     bool check_algorithm_results(Graph graph, map<City, vector<City>> adj);
+    // prints out a comparison
+    void compare_algorithm_results(vector<City> city_list, Graph graph, City start, map<City, vector<City>> adj);
 private:
 };
 

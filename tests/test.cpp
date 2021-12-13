@@ -26,7 +26,7 @@ int main() {
     //TESTCASE.check_get_distance(city_list[0], city_list[1]);
     //TESTCASE.check_get_distance(city_list[5], city_list[6]);
     //TESTCASE.check_add_adj_city(city_list[0]);
-
+    //TESTCASE.compare_algorithm_results(city_list, graph, city_list[0], adj);
     // FW Test:
     /*
     vector<vector<double>> FW_results = graph.FW(adj);

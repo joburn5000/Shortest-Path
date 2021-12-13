@@ -105,7 +105,6 @@ map<City, pair<City, double> > Graph::dijkstras(City s, map<City, vector<City>> 
 }
     
 double Graph::BFS (Graph G, City s, City e, map<City, vector<City>> adj) {
-    cout<<s.getName()<<" to "<<e.getName()<<endl;
     double dist = 0;
     queue<City> q; // queue
     vector<City> path;

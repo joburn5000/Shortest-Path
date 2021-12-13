@@ -102,6 +102,7 @@ bool test::check_add_adj_city(City a, map<City, vector<City>> adj) {
 bool test::check_algorithm_results(Graph graph, map<City, vector<City>> adj) {
     vector<City> city_list = graph.getCities();
     vector<vector<double>> FW_results = graph.FW(adj);
+    /*
     for (unsigned i = 0; i < 1; i++) {
         City origin = city_list[i];
         map<City, pair<City, double>> dijkstras_results = graph.dijkstras(origin, adj);
@@ -114,5 +115,17 @@ bool test::check_algorithm_results(Graph graph, map<City, vector<City>> adj) {
             }
         }
     }
+    */
     return 1;
+}
+
+void test::compare_algorithm_results(vector<City> city_list, Graph graph, City start, map<City, vector<City>> adj) {
+    vector<vector<double>> FW_results = graph.FW(adj);
+    bool flag = true;
+    int start_index = graph.getIndex(start);
+    for (int i = 1; i < city_list.size(); i++) {
+        cout<<start.getName()<<" to "<<city_list[i].getName()<<":"<<endl;
+        cout<<"FW:  "<<FW_results[start_index][i]<<endl;
+        cout<<"BFS: "<<graph.BFS(graph, start, city_list[i], adj)<<endl;;
+    }
 }
