@@ -44,7 +44,6 @@ Graph.h
 - Contains the Floyd Warshall and Dijkstra's algorithms
   and the BFS traversal
 - getIndex outputs the index of a given a City
-- print_adj_cities prints out all the adjacent cities
 
 Folders:
 
@@ -52,7 +51,15 @@ Folders:
 - md files: contains contract, development, goals & proposal,
   README, results, and log
 - tests: contains TESTCASE.h TESTCASE.cpp, and test.cpp
- 
+
+Results
+
+- you can access the results given the functions in graph:
+- print_adj_cities prints out all the adjacent cities
+- compare_algorithm_results prints out side-by-side 
+  results of FW, Dijstra, and BFS for a given city as a
+  distance from that city to all the other cities
+
  
  
  (2) Full instructions on how to build and run your executable, 
