@@ -1,7 +1,9 @@
-# andrewo4-newburn2-beallis3
-Final Project for andrewo4-newburn2-beallis3
+Abstract
 
- (1) The location of all major code, data, and results
+This program takes the top 50 cities in the USA and uses
+the algorithms Floyd-Warshall, Dijkstra, and BFS to find
+the shortest path between any 2 cities.
+
  
 The code has the following files:
 
@@ -72,10 +74,6 @@ Results
   distance from that city to all the other cities
 
  
- 
- (2) Full instructions on how to build and run your executable, 
- including how to define the input data and output location for
- each method. 
  
  In order to run the algorithms and traversals, one must first
  process data:
@@ -148,14 +146,6 @@ Building and running code:
  - Output: a double (distance) from City s to City e
 
 
- 
- (3) Full instructions how to build and run your test suite, 
- including a general description on what tests you have created.
- It is in your best interest to make the instructions (and the
- running of your executables and tests) as simple and straightforward 
- as possible.
- 
- 
  To run tests, first procss data and create a graph by following
  instructions in (2). Then do the following:
  
@@ -173,3 +163,6 @@ TESTCASES and test.cpp are found in the tests folder There are
    up when you add a city
  - check_FW_dijkstras: compares the results from FW and Dikjstra's
  - check_BFS: compares the results from BFS to FW and Dikjstra's
+
+
+Collaborators: Andrew O'Connel and Steven Beallis
