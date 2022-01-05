@@ -14,22 +14,22 @@
 using namespace std;
 
 class Graph {
-	public:
-		Graph();
-        Graph(vector<City> cities, vector<Edge> edges);
-		vector<Edge> getEdges();
-		vector<City> getCities();
-		vector<vector<double>> FW();
-		map<City, pair<City, double>> dijkstras(City s); // change vectors
-        double BFS(City s, City e);
-		int getIndex(City c);
-        void add_map(map<City, vector<City>> adj_);
-        map<City, vector<City>> get_map();
-        // prints out a comparison
-        void print_algorithm_results(City start);
-        void print_adj_cities();
-	private:
-		vector<Edge> edges_;
-		vector<City> cities_;
-        map<City, vector<City>> adj;
+public:
+    Graph();
+    Graph(vector<City> cities, vector<Edge> edges);
+    vector<Edge> getEdges();
+    vector<City> getCities();
+    vector<vector<double>> FW();
+    map<City, pair<City, double>> dijkstras(City s); // change vectors
+    double BFS(City s, City e);
+    int getIndex(City c);
+    void add_map(map<City, vector<City>> adj_);
+    map<City, vector<City>> get_map();
+    // prints out a comparison
+    void print_algorithm_results(City start);
+    void print_adj_cities();
+private:
+    vector<Edge> edges_;
+    vector<City> cities_;
+    map<City, vector<City>> adj;
 };
