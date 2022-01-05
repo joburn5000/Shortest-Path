@@ -1,7 +1,23 @@
-12/03
+First week of November (11/1 - 11/7):
+- Forming team
+- Looking through projects and picking one
+- Brainstorming session
+- Creating project proposal and contract
+
+Second week of November (11/8 - 11/14)
+- Changing from A* to FW and Dijkstra's
+
+Third week of November: (11/15 - 11/21)
+- Team brainstorming
+- Made a plan for going forward
+
+Week of Thanksgiving break (11/22-28):
+- Learning all algorithms and traveral
 - Created FW and other pseudocode (Andrew)
 - Created Dijkstra pseudocode (Steven)
 - Created BFS pseudocode (Josh)
+
+12/03
 - Team meeting with John Li
 
 12/04
@@ -29,3 +45,15 @@
 - Fixed a bug with the output of Dijkstras (Steven)
 - Began writing test cases (Josh)
 - Removed some unnecessary initialization to optimize FW runtime. (Andrew)
+
+12/12
+- Debugged and compled algorithms (Josh & Steven)
+- Finished BFS  (Josh)
+- Wrote test cases (Josh)
+- Written report
+- Made slides
+
+12/13
+- Finalized code (Josh)
+- Finished presentation
+- Recorded video
